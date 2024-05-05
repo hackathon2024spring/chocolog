@@ -1,0 +1,19 @@
+name: Check Submodules
+on:
+  pull_request:
+jobs:
+  check-submodules:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: 'recursive'
+    - name: Check submodule flask_back
+      run: |
+        git submodule status flask_back | grep -q '^+' && echo "flask_back was updated" || (echo "Error: flask_back was not updated" && exit 1)
+    - name: Check submodule front  
+      run: |  
+        git submodule status front | grep -q '^+' && echo "front was updated" || (echo "Error: front was not updated" && exit 1)        
+    - name: Fail if any submodule was not updated
+      if: failure()
+      run: exit 1
