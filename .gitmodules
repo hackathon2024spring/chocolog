@@ -1,0 +1,6 @@
+[submodule "flask_back"]
+	path = flask_back
+	url = https://github.com/hackathon2024spring/flask_back
+[submodule "front"]
+	path = front
+	url = https://github.com/hackathon2024spring/front
