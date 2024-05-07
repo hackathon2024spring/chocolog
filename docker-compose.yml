@@ -26,8 +26,10 @@ services:
       - hackathon_spring_network
     volumes:
       - ./front:/home/appuser/devcon
-    ports:
-      - ${PORT_VITE}:${PORT_VITE}
+    # ports:
+    #   - ${PORT_VITE}:${PORT_VITE}
+    expose:
+      - ${PORT_VITE}
     command: ["/bin/bash", "-c", "/home/appuser/devcon/build.sh"]
 
   fastapi:
